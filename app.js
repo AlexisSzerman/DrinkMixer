@@ -1,4 +1,4 @@
-/* // Usando una funcion para verificar la mayoría de edad del usuario
+// Usando una funcion para verificar la mayoría de edad del usuario
 
 let añoNacimiento = Number(prompt("Ingresá tu año de nacimiento"));
 let añoActual = 2022;
@@ -124,32 +124,6 @@ if (resultado >= 18) {
 } else {
   alert("Disculpa, todavía no podés utilizar nuestra app");
 }
-
- */
-
-
-/* let cocktails = [ "Gin Tonic", "Destornillador" , "Mojito", "Cuba Libre" , "Daiquiri", "Martini", "Tom Collins" , "CaipiVodka" , "Vodka Tonic"]
-
-console.log(cocktails [5]);
-
-*/
-
-let bases = [];
-let diluyentes = [];
-
-bases.push (prompt ("Agregá una espirituosa (Vodka, Ron, Gin, Tequila o Whiskey)"))
-diluyentes.push (prompt ("Agregá un  diluyente (Coca, Sprite, Jugo de naranja o Tonica)"))
-
-let coctelera = bases.concat(diluyentes);
-/* console.log(coctelera) */
-
-
-//Para saber que ingredientes agregué
-for (let i=0; i<=10; i++) {
-  console.log (coctelera [i])
-}
-
-
 
 
 
