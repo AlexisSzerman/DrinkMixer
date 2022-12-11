@@ -1,16 +1,15 @@
-/* -------------------------Las dos entregas combinadas------------------------------------------------
+/* -------------------------Las dos entregas combinadas------------------------------------------------*/
 
 // Usando una funcion para verificar la mayoría de edad del usuario
 
 let añoNacimiento = Number(prompt("Ingresá tu año de nacimiento"));
 let añoActual = 2022;
 
-
 //Usando un bucle para que obligatoriamente se ponga la edad
 
-while(añoNacimiento == "" ){
+while (añoNacimiento == "") {
   alert("Por favor, ingresá tu año de nacimiento");
-  añoNacimiento = prompt("Debes ingresar tu año de nacimiento para continuar"); 
+  añoNacimiento = prompt("Debes ingresar tu año de nacimiento para continuar");
 }
 
 function edad(añoNacimiento, añoActual) {
@@ -21,74 +20,61 @@ let resultado = edad(añoNacimiento, añoActual);
 
 //Usando un condicional para comenzar con el funcionamiento en caso de ser mayor
 
-
 if (resultado >= 18) {
   alert("Preparate para armar los mejores tragos");
-  
-  function saludoInicio(){
-    let nombre = prompt("Por favor ingresá tu nombre")
-    let apellido   = prompt("Por favor, ingresá tu apellido")
-    alert(`Bienvenido a Drink Mixer ${nombre} ${apellido}! ¿Listo para prepararte los mejores tragos?`)
-  } 
-  
+
+  function saludoInicio() {
+    let nombre = prompt("Por favor ingresá tu nombre");
+    let apellido = prompt("Por favor, ingresá tu apellido");
+    alert(
+      `Bienvenido a Drink Mixer ${nombre} ${apellido}! ¿Listo para prepararte los mejores tragos?`
+    );
+  }
+
   saludoInicio();
-  
 
   let bases = [];
-let diluyentes = [];
+  let diluyentes = [];
 
-bases.push (prompt ("Agregá una espirituosa (Vodka, Ron, Gin, Tequila o Whiskey)"))
+  bases.push(
+    prompt("Agregá una espirituosa (Vodka, Ron, Gin, Tequila o Whiskey)")
+  );
 
+  diluyentes.push(
+    prompt("Agregá un  diluyente (Coca, Sprite, Jugo de naranja o Tonica)")
+  );
 
-diluyentes.push (prompt ("Agregá un  diluyente (Coca, Sprite, Jugo de naranja o Tonica)"))
+  let coctelera = bases.concat(diluyentes);
+  /* console.log(coctelera) */
 
-let coctelera = bases.concat(diluyentes);
-/* console.log(coctelera) */
+  //Para saber que ingredientes agregué
 
-//Para saber que ingredientes agregué
-/*
-for (let i=0; i<=10; i++) {
-  console.log (coctelera [i])
-}
+  for (let i = 0; i <= 10; i++) {
+    console.log(coctelera[i]);
+  }
 
+  if (coctelera.includes("gin") && coctelera.includes("tonica")) {
+    alert(
+      "Gin-Tonic: mezcle el gin y el agua tónica, agregue jugo de limón y mucho hielo"
+    );
+  }
 
-if (coctelera.includes('gin') && coctelera.includes('tonica')) {
-  alert("Gin-Tonic: mezcle el gin y el agua tónica, agregue jugo de limón y mucho hielo");
-}
+  if (coctelera.includes("vodka") && coctelera.includes("tonica")) {
+    alert(
+      "Vodka-Tonic: mezcle el gin y el agua tónica, agregue jugo de limón y mucho hielo"
+    );
+  }
 
-if (coctelera.includes('vodka') && coctelera.includes('tonica')) {
-  alert("Vodka-Tonic: mezcle el gin y el agua tónica, agregue jugo de limón y mucho hielo");
-}
-
-if (coctelera.includes('ron') && coctelera.includes('coca')) {
-  alert("Cuba Libre: mezcle el ron y la Coca-Cola, agregue jugo de limón y mucho hielo");
-}
-
-
-  
+  if (coctelera.includes("ron") && coctelera.includes("coca")) {
+    alert(
+      "Cuba Libre: mezcle el ron y la Coca-Cola, agregue jugo de limón y mucho hielo"
+    );
+  }
 } else {
   alert("Disculpa, todavía no podés utilizar nuestra app");
 }
 
-
-
 //-----------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Opcion 1
 
@@ -116,9 +102,6 @@ if (ingredientes.includes('ron') || ingredientes.includes('Ron') && ingredientes
   alert("Cuba Libre: mezcle el ron y la Coca-Cola, agregue jugo de limón y mucho hielo");
 }
 */
-
-
-
 
 /* Opcion 2
 // Variables de bases del cocktail y de los diluyentes
@@ -264,8 +247,7 @@ switch (selectedSpirit) {
   }
   */
 
-
-  /*
+/*
 Sugerencia de Chatgpt
 <!DOCTYPE html>
 <html>
@@ -313,5 +295,3 @@ Sugerencia de Chatgpt
         }
         if (ingredientes.includes('limón') && ingredientes.includes('ron') && ingredientes.includes('hielo') && ingredientes.
         */
-
- 
