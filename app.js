@@ -1,250 +1,119 @@
-/*---------------------Version 1--------------------------
+// ============ SEGUNDA PRE-ENTREGA ================
+
+// Arme un array vacío donde se van a pushear los ingredientes que el usuario ingresará por prompt
 
 const ingredientes = [];
-let cantidad = 2
+let cantidad = 2;
 
-function Tragos (nombre, base, diluyente) {
+// Mediante el constructor arme los objetos que representan cada trago
+
+function Tragos(nombre, base, diluyente) {
   this.nombre = nombre;
   this.base = base;
   this.diluyente = diluyente;
   this.receta = function () {
-  console.log ("Esta es tu receta para un" + " " + this.nombre + ": " + this.base + " , " + this.diluyente);
-  };
-  }
-  
-  const ginTonic = new Tragos ("Gin Tonic", "Gin = 2oz", "Tonica = 2.5oz");
-  const cubaLibre = new Tragos ("Cuba Libre", "Ron = 2oz", "Coca-Cola = 2.5oz");
-  const vodkaTonic = new Tragos ("Vodka Tonic", "Vodka = 2oz", "Tonica = 2.5oz");
-  
- 
-  do {
-    let base = prompt ("Ingresá la base de tu trago, puede ser Vodka, Ron, Gin, Tequila o Whiskey")
-    ingredientes.push (base);
-    let diluyentes = prompt ("Ingresá un diuyente para tu trago, puede ser Coca-Cola, Sprite, Jugo de naranja o Tonica")
-    ingredientes.push (diluyentes);
-  } while (ingredientes.length != cantidad)
-  
-  alert (`Ingresaste ${ingredientes}` )
-  
-  if (ingredientes.includes('gin') || ingredientes.includes('Gin') && ingredientes.includes('tonica') || ingredientes.includes('Tonica') || ingredientes.includes('tónica') || ingredientes.includes('Tónica')) {
-    ginTonic.receta ();
-  }
-  
-  if (ingredientes.includes('vodka') || ingredientes.includes('Vodka') && ingredientes.includes('tonica') || ingredientes.includes('Tonica') || ingredientes.includes('tónica') || ingredientes.includes('Tónica'))  {
-    vodkaTonic.receta ();
-  }
-  
-  if (ingredientes.includes('ron') || ingredientes.includes('Ron') && ingredientes.includes('coca') || ingredientes.includes('Coca') || ingredientes.includes('Coca-Cola') || ingredientes.includes('coca-cola')) {
-    cubaLibre.receta ();
-  }
-
-
-
-/* -------------------------Version 2, con las dos entregas combinadas------------------------------------------------
-
-// Usando una funcion para verificar la mayoría de edad del usuario
-
-let añoNacimiento = Number(prompt("Ingresá tu año de nacimiento"));
-let añoActual = 2022;
-
-//Usando un bucle para que obligatoriamente se ponga la edad
-
-while (añoNacimiento == "") {
-  alert("Por favor, ingresá tu año de nacimiento");
-  añoNacimiento = prompt("Debes ingresar tu año de nacimiento para continuar");
-}
-
-function edad(añoNacimiento, añoActual) {
-  return añoActual - añoNacimiento;
-}
-
-let resultado = edad(añoNacimiento, añoActual);
-
-//Usando un condicional para comenzar con el funcionamiento en caso de ser mayor
-
-if (resultado >= 18) {
-  alert("Preparate para armar los mejores tragos");
-
-  function saludoInicio() {
-    let nombre = prompt("Por favor ingresá tu nombre");
-    let apellido = prompt("Por favor, ingresá tu apellido");
-    alert(
-      `Bienvenido a Drink Mixer ${nombre} ${apellido}! ¿Listo para prepararte los mejores tragos?`
+    console.log(
+      "Esta es tu receta para un" +
+        " " +
+        this.nombre +
+        ": " +
+        this.base +
+        " , " +
+        this.diluyente
     );
-  }
-
-  saludoInicio();
-
-  let bases = [];
-  let diluyentes = [];
-  
-  const ginTonic = {
-    nombre: "Gin Tonic",
-    base: "Gin = 2oz.",
-    diluyente: "Agua Tónica = 2oz",
   };
+}
 
-  const vodkaTonic = {
-    nombre: "Vodka Tonic",
-    base: "Vodka = 2oz.",
-    diluyente: "Agua Tónica = 2oz",
-  };
+const ginTonic = new Tragos("Gin Tonic", "Gin = 2oz", "Tonica = 2.5oz");
+const cubaLibre = new Tragos("Cuba Libre", "Ron = 2oz", "Coca-Cola = 2.5oz");
+const vodkaTonic = new Tragos("Vodka Tonic", "Vodka = 2oz", "Tonica = 2.5oz");
+const whiskeySour = new Tragos(
+  "Whiskey Sour",
+  "Whiskey = 2oz",
+  "Jugo de limón = 2.5oz"
+);
 
-  const cubaLibre = {
-    nombre: "Cuba Libre",
-    base: "Ron = 2oz.",
-    diluyente: "Coca-Cola = 2oz",
-  };
+// Dentro del condicional estan los prompts que pushean al array vacío la base y el diluyente del cocktail
 
-  const destornillador = {
-    nombre: "Vodka",
-    base: "Vodka = 2oz.",
-    diluyente: "Jugo de Naranja = 2oz",
-  };
-
-
-
-
-  bases.push(
-    prompt("Agregá una espirituosa (Vodka, Ron, Gin, Tequila o Whiskey)")
+do {
+  let base = prompt(
+    "Ingresá la base de tu trago, puede ser Vodka, Ron, Gin, o Whiskey"
   );
-
-  diluyentes.push(
-    prompt("Agregá un  diluyente (Coca, Sprite, Jugo de naranja o Tonica)")
+  ingredientes.push(base);
+  let diluyentes = prompt(
+    "Ingresá un diuyente para tu trago, puede ser Coca-Cola, Sprite, Jugo de limón o Tonica"
   );
+  ingredientes.push(diluyentes);
+} while (ingredientes.length != cantidad);
 
-  let coctelera = bases.concat(diluyentes);
+//Un alert que muestra los ingredientes ingresados
 
-  //Para saber que ingredientes agregué
-/*
-  for (let i = 0; i <= 10; i++) {
-    console.log(coctelera[i]);
-  }
-*/
-/*
-  if (coctelera.includes("gin") && coctelera.includes("tonica")) {
-    console.table(ginTonic);
-    alert(  JSON.stringify(ginTonic)  );
-    
-  }
+alert(`Ingresaste ${ingredientes}`);
 
-  if (coctelera.includes("vodka") && coctelera.includes("tonica")) {
-    alert(
-      "Vodka-Tonic: mezcle el gin y el agua tónica, agregue jugo de limón y mucho hielo"
-    );
-  }
+//Condicionales que van al array y se fijan si el usuario ingresó alguno de los ingredientes que incluyen las variables de cada cocktail y muestran por consola la receta correspondiente
 
-  if (coctelera.includes("ron") && coctelera.includes("coca")) {
-    alert(
-      "Cuba Libre: mezcle el ron y la Coca-Cola, agregue jugo de limón y mucho hielo"
-    );
-  }
-} else {
-  alert("Disculpa, todavía no podés utilizar nuestra app");
+if (
+  ingredientes.includes("gin") ||
+  (ingredientes.includes("Gin") && ingredientes.includes("tonica")) ||
+  ingredientes.includes("Tonica") ||
+  ingredientes.includes("tónica") ||
+  ingredientes.includes("Tónica")
+) {
+  ginTonic.receta();
 }
 
-
-
-
-
-/* ----------------------------- Opcion chat gpt ---------------------------
-
-
-
-// Define an array of spirits
-let spirits = ['Vodka', 'Gin', 'Ron', 'Tequila', 'Whiskey'];
-
-// Define an array of mixers
-let mixers = ['Coca-Cola', 'Sprite', 'Jugo de Naranja', 'Agua Tónica'];
-
-// Use a loop to display a prompt for each spirit, allowing the user to select one
-let selectedSpirit = null;
-for (let i = 0; i < spirits.length; i++) {
-  let spirit = spirits[i];
-  let response = prompt(`Select a spirit: ${spirit}`);
-  if (response === 'yes') {
-    selectedSpirit = spirit;
-    break;
-  }
+if (
+  ingredientes.includes("vodka") ||
+  (ingredientes.includes("Vodka") && ingredientes.includes("tonica")) ||
+  ingredientes.includes("Tonica") ||
+  ingredientes.includes("tónica") ||
+  ingredientes.includes("Tónica")
+) {
+  vodkaTonic.receta();
 }
 
-// Use a loop to display a prompt for each mixer, allowing the user to select one
-let selectedMixer = null;
-for (let i = 0; i < mixers.length; i++) {
-  let mixer = mixers[i];
-  let response = prompt(`Select a mixer: ${mixer}`);
-  if (response === 'yes') {
-    selectedMixer = mixer;
-    break;
-  }
+if (
+  ingredientes.includes("ron") ||
+  (ingredientes.includes("Ron") && ingredientes.includes("coca")) ||
+  ingredientes.includes("Coca") ||
+  ingredientes.includes("Coca-Cola") ||
+  ingredientes.includes("coca-cola")
+) {
+  cubaLibre.receta();
 }
 
-// Use a switch statement to determine the recipe for the selected cocktail
-let recipe = '';
-switch (selectedSpirit) {
-  case 'vodka':
-    switch (selectedMixer) {
-      case 'coca-cola':
-        recipe = alert ("No Vodka and Coke Cocktails");
-        break;
-      case 'sprite':
-        recipe = alert ('Vodka and Lemonade: Pour 1.5 oz of vodka and 2 oz of lemonade into a glass with ice, stir, and enjoy!') ;
-        break;
-      case 'orange juice':
-        recipe = alert ('Screwdriver: Pour 1.5 oz of vodka and 2 oz of orange juice into a glass with ice, stir, and enjoy!');
-        break;
-      case 'tonic water':
-        recipe = alert ('Vodka Tonic: Pour 1.5 oz of vodka and 2 oz of tonic water into a glass with ice, stir, and enjoy!');
-        break
-    }
-  }
-  
+if (
+  ingredientes.includes("Whiskey") ||
+  (ingredientes.includes("whiskey") &&
+    ingredientes.includes("jugo de limon")) ||
+  ingredientes.includes("jugo") ||
+  ingredientes.includes("Jugo de limon") ||
+  ingredientes.includes("limon")
+) {
+  whiskeySour.receta();
+}
 
-/*
-Sugerencia de Chatgpt
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Cócteles con ingredientes en casa</title>
-  </head>
-  <body>
-    <h1>Cócteles con ingredientes en casa</h1>
-    <form>
-      <label for="ingredientes">Ingredientes:</label><br>
-      <input type="checkbox" id="ingrediente1" value="limón">Limón<br>
-      <input type="checkbox" id="ingrediente2" value="ron">Ron<br>
-      <input type="checkbox" id="ingrediente3" value="hielo">Hielo<br>
-      <input type="checkbox" id="ingrediente4" value="agua tónica">Agua tónica<br>
-      <input type="checkbox" id="ingrediente5" value="menta">Menta<br>
-      <input type="button" value="Generar recetas" onclick="generarRecetas()">
-    </form>
-    <div id="recetas">
-      <!-- Aquí se mostrarán las recetas generadas -->
-    </div>
-    <script>
-      function generarRecetas() {
-        // Recoge la información sobre los ingredientes seleccionados por el usuario
-        var ingredientes = [];
-        if (document.getElementById('ingrediente1').checked) {
-          ingredientes.push(document.getElementById('ingrediente1').value);
-        }
-        if (document.getElementById('ingrediente2').checked) {
-          ingredientes.push(document.getElementById('ingrediente2').value);
-        }
-        if (document.getElementById('ingrediente3').checked) {
-          ingredientes.push(document.getElementById('ingrediente3').value);
-        }
-        if (document.getElementById('ingrediente4').checked) {
-          ingredientes.push(document.getElementById('ingrediente4').value);
-        }
-        if (document.getElementById('ingrediente5').checked) {
-          ingredientes.push(document.getElementById('ingrediente5').value);
-        }
-        
-        // Genera las recetas de cócteles que se pueden hacer con los ingredientes seleccionados
-        var recetas = [];
-        if (ingredientes.includes('limón') && ingredientes.includes('ron') && ingredientes.includes('hielo')) {
-          recetas.push('Daiquirí: mezcle el ron, el jugo de limón y el hielo en una coctelera y cócteles para servir en un vaso con hielo.');
-        }
-        if (ingredientes.includes('limón') && ingredientes.includes('ron') && ingredientes.includes('hielo') && ingredientes.
-        */
+//Método de filtro para buscar por nombre y por diluyente qué cocktails se pueden armar y se muestra por consola
+
+
+//En un array de objetos se encuentran los cocktails y sus nombres, bases y diluyentes
+const cocktails = [
+  { nombre: "Gin Tonic", base: "Gin", diluyente: "Tonica" },
+  { nombre: "Cuba Libre", base: "Ron", diluyente: "Coca Cola" },
+  { nombre: "Vodka Tonic", base: "Vodka", diluyente: "Tonica" },
+  { nombre: "Whiskey Sour", base: "Whiskey", diluyente: "Jugo de limon" },
+];
+
+// Nombro la variable que después usaré en el filtro y en la búsqueda
+
+let busquedaDiluyente = prompt("Ingresa en la búsqueda un diluyente"); /*Hay que poner el exacto lo que aparece en el objeto*/
+let busquedaNombre = prompt("Ingresa el nombre del Cocktail que estás buscando"); /*Hay que poner exacto exacto lo que aparece en el objeto*/
+
+let resultadoDiluyente = cocktails.filter(
+  (d) => d.diluyente === busquedaDiluyente
+);
+console.log(resultadoDiluyente);
+
+
+let resultadoNombre = cocktails.find((d) => d.nombre === busquedaNombre);
+console.log(resultadoNombre);
