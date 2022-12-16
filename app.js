@@ -117,3 +117,12 @@ console.log(resultadoDiluyente);
 
 let resultadoNombre = cocktails.find((d) => d.nombre === busquedaNombre);
 console.log(resultadoNombre);
+
+
+
+
+const enJSON = JSON.stringify(cocktails);
+console.log(enJSON);
+localStorage.setItem('cocktails', enJSON);
+
+
