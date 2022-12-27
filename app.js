@@ -1,4 +1,4 @@
-// ============ SEGUNDA PRE-ENTREGA ================
+// ============ TERCERA PRE-ENTREGA ================
 
 // Arme un array vacío donde se van a pushear los ingredientes que el usuario ingresará por prompt
 
