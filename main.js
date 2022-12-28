@@ -15,13 +15,13 @@ btnMixer.addEventListener("click", function () {
   if (spirit.includes("Gin") && mixer.includes("Agua Tónica")) {
     alertCocktail.innerHTML = `
     <div class="card" style="width: 18rem;">
-    <img src="ginTonic.jpg" alt="Gin Tonic">
-    <div class="card-body">
-      <h5 class="card-title">Gin Tonic</h5>
-      <p class="card-text">Excelente, podes hacerte un Gin-Tonic. Debes poner 2.5oz de Gin y 3oz de Agua Tónica en una  
-       copa con abundante hielo. Decorá con una rodaja de limón o pepino y a disfrutar!</p>
-    </div>
-</div>`;
+     <img src="ginTonic.jpg" alt="Gin Tonic">
+        <div class="card-body">
+            <h5 class="card-title">Gin Tonic</h5>
+            <p class="card-text">Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Agua Tónica 
+             en una copa con abundante hielo. Decorá con una rodaja de limón o pepino y a disfrutar!</p>
+        </div>
+    </div>`;
     document.querySelector(".selector").appendChild(alertCocktail);
   } else if (spirit.includes("Ron") && mixer.includes("Coca-Cola")) {
     alertCocktail.innerHTML = `
@@ -32,8 +32,28 @@ btnMixer.addEventListener("click", function () {
           <p class="card-text">Para disfrutar de este trago debes poner 2.5oz de Ron y 3oz de Coca-Cola en un vaso con  
            abundante hielo. Decorá con una rodaja de limón o lima y listo!</p>
         </div>
-    </div>
-        `;
+    </div>`;
     document.querySelector(".selector").appendChild(alertCocktail);
-  }
+  }else if (spirit.includes("Gin") && mixer.includes("Soda")) {
+    alertCocktail.innerHTML = `
+    <div class="card" style="width: 18rem;">
+        <img src="tomCollins.jpg" alt="Tom Collins">
+        <div class="card-body">
+          <h5 class="card-title">Tom Collins</h5>
+          <p class="card-text">Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Soda en un vaso con  
+           abundante hielo. Decorá con una rodaja de limón, una cereza y listo!</p>
+        </div>
+    </div>`;
+    document.querySelector(".selector").appendChild(alertCocktail); 
+    } 
+    
+    else alertCocktail.innerHTML = `
+    <div class="alert alert-danger" role="alert">
+    <h4>No contamos con recetas para los ingredientes seleccionados, por favor elegí otros</h4>
+    </div>`
+    document.querySelector(".selector").appendChild(alertCocktail);
+
+
+
 });
+
