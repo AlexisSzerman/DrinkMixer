@@ -13,7 +13,7 @@ const cocktails = [{nombre: 'Gin Tonic', receta: "Para disfrutar de este trago d
 const inputSearch = document.querySelector(".form-control")
 const cocktailCard = document.querySelector(".cocktail-cards")
 
-// Cards con template literals para que aparezcan para el filtrado
+// Template strings con template literals para que aparezcan las cards para la búsqueda
 
 const cardRecipe = (trago)=> {
     return `<div class="card" style="width: 18rem;">
@@ -27,11 +27,22 @@ const cardRecipe = (trago)=> {
 
 // Filtrado de los tragos asociado al imput con arrow function
 
-const filterCocktails = ()=> {
-    let busqueda = inputSearch.value.trim().toUpperCase()
-    let resultado = cocktails.filter(trago => trago.nombre.startsWith(busqueda)) //En la entrega anterior utilizaba includes, pero me tiraba valores verdaderos que no estaban bien, por lo que decidí cambiar a startsWith que me trae la coincidencia exacta del nombre, que es lo que se pretende hacer
-    mostrarCocktails(resultado)
-}
+const filterCocktails = () => {
+    let busqueda = inputSearch.value.trim().toLowerCase();
+    let resultado = cocktails.filter(trago => trago.nombre.toLowerCase().startsWith(busqueda)); //En la entrega anterior utilizaba includes, pero me tiraba valores verdaderos que no estaban bien, por lo que decidí cambiar a startsWith que me trae la coincidencia exacta del nombre
+
+    //Validación para que tire un mensaje de error en caso que no se ingrese un nombre corrrecto
+    if (resultado.length === 0) {
+      cocktailCard.innerHTML = `
+        <div class="alert alert-danger" role="alert">
+          <h4>No se han encontrado tragos con ese nombre. Por favor, ingresá un nombre válido</h4>
+        </div>`;
+    } else {
+      mostrarCocktails(resultado);
+    }
+  }
+  
+
 //Con esta funcion muestro el contenido del array de cocktails gracias al forEach y lo asocio a la variable que crea las cards
 const mostrarCocktails = (t)=> {
     let tarjetas = ""
@@ -40,7 +51,7 @@ const mostrarCocktails = (t)=> {
             tarjetas += cardRecipe(trago)
         })
         cocktailCard.innerHTML = tarjetas
-    }
+    }  
    
 }  
 //LLamo a las funciones 
@@ -51,10 +62,8 @@ inputSearch.addEventListener("input", filterCocktails)
 
 
 
-
-
-
-
+    
+      
 
 
 
