@@ -8,6 +8,14 @@ const cocktails = [{nombre: 'Gin Tonic', receta: "Para disfrutar de este trago d
                    {nombre: 'Tom Collins', receta: "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Soda en un vaso largo con abundante hielo. Decorá con una rodaja de limón, una cereza y listo"},
 ]
 
+const retrieveCocktails = () => {
+    const cocktailsString = localStorage.getItem("cocktails");
+    return cocktailsString ? JSON.parse(cocktailsString) : [];
+  }
+  
+retrieveCocktails();
+  
+
 //Variables asociadas al DOM mediante clases
 
 const inputSearch = document.querySelector(".form-control")
@@ -59,19 +67,14 @@ mostrarCocktails(cocktails)
 inputSearch.addEventListener("input", filterCocktails)
 
 
+const saveCocktails = () => {
+    const cocktailsString = JSON.stringify(cocktails);
+    localStorage.setItem("cocktails", cocktailsString);
+  }
+  
+  saveCocktails();
 
 
-
-    
-      
-
-
-
-
-
-
-
-                   
 //Tener en cuenta para hacer pagina de validacion de edad y despues redireccionar a la principal
 //ADD EVENT LISTENER
 /* btnNuevo.addEventListener("click", ()=> {
