@@ -1,31 +1,31 @@
-
+//Establecemos una variable con el minimo de edad requerido, una con el año actual y con el mensaje de error
 const ageLimit = 18;
+const currentYear = 2022;
+let errorMsg = document.createElement("h4");
+
+//Armé una función que tome la edad del input, parseamos el año para que sea un número
 
 const validateAge = () => {
-  // Obtener la fecha de nacimiento del usuario del elemento de entrada
-  const birthDateString = document.querySelector("#birth-date").value;
+  const birthYearString = document.querySelector("#birth-year").value;
 
-  // Convertir la fecha de nacimiento a un objeto Date
-  const birthDate = new Date(birthDateString);
+  const birthYear = parseInt(birthYearString);
 
-  // Obtener la fecha actual
-  const currentDate = new Date();
+  const age = currentYear - birthYear; // Resta simple para saber la edad y el condicional para validar acceso
 
-  // Calcular la edad del usuario en años
-  const age = currentDate.getFullYear() - birthDate.getFullYear();
-
-  // Validar si el usuario es mayor de edad
   if (age >= ageLimit) {
-    // Si es mayor de edad, llevarlo a la web app
     window.location.href = "main.html";
   } else {
-    // Si no es mayor de edad, mostrar un mensaje de error
-    alert("Lo siento, debes ser mayor de edad para acceder a esta web app.");
+    // Si no es mayor de edad, mostrarmos un mensaje de error
+    errorMsg.innerHTML = `
+    <div class=" container alert alert-danger" role="alert">
+    <h4>Lo sentimos, no puedes ingresar a DrinkMixer</h4>
+    </div>`;
+    document.querySelector(".age-error").appendChild(errorMsg);
   }
-}
+};
 
-// Asociar el evento submit al formulario y validar la edad al enviar el formulario
+// Asocio el submit a la etiqueta form con el submit
 document.querySelector("form").addEventListener("submit", (event) => {
-  event.preventDefault(); // Prevenir el comportamiento por defecto del formulario (recargar la página)
+  event.preventDefault(); // Para prevenir que recargue la página
   validateAge();
 });

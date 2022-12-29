@@ -11,13 +11,16 @@
 
 <body>
     <div class="container">
-        <h2>Por favor, para continuar, ingresa tu año de nacimiento</h2>
-        <form>
-            <label for="birth-date">Fecha de nacimiento:</label>
-            <input type="date" id="birth-date" name="birth-date">
-            <button type="submit" class="btn btn-primary btn-sm" id="submit-button">Enviar</button>
+        <h2>Para continuar, por favor ingresá el año en que naciste</h2>
+        <form class="form-group">
+            <label class="col-form-label mt-4" for="birth-year">Año de nacimiento:</label>
+            <input type="text" class="form-control" placeholder="Año" id="birth-year" name="birth-year"
+                pattern="[0-9]{4}">
+            <button type="submit" class="btn btn-primary btn-sm" id="submit-button">Validar</button>
         </form>
     </div>
+    <div class="age-error"></div>
+
 
     <script src="index.js"></script>
 </body>
