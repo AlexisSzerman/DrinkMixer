@@ -22,10 +22,19 @@ const validateAge = () => {
     </div>`;
     document.querySelector(".age-error").appendChild(errorMsg);
   }
+  localStorage.setItem("Edad", age);
 };
 
-// Asocio el submit a la etiqueta form con el submit
+// Asocio el submit a la etiqueta form y a su vez con el submit
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault(); // Para prevenir que recargue la página
   validateAge();
 });
+
+/* const saveCocktails = () => {
+  const cocktailsString = JSON.stringify(cocktails);
+  localStorage.setItem("cocktails", cocktailsString);
+}
+
+saveCocktails(); */
+

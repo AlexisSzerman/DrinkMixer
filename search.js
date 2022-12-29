@@ -1,6 +1,5 @@
 // Array de objetos con los nombres de los tragos y sus recetas
 
-
 const cocktails = [{nombre: 'Gin Tonic', receta: "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
                    {nombre: 'Cuba Libre', receta: "Para disfrutar de este trago debes poner 2.5oz de Ron y 3oz de Coca-Cola en un vaso con abundante hielo. Decorá con una rodaja de limón, o lima y listo"},
                    {nombre: 'Vodka Tonic', receta: "Para disfrutar de este trago debes poner 2.5oz de Vodka y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
@@ -8,13 +7,14 @@ const cocktails = [{nombre: 'Gin Tonic', receta: "Para disfrutar de este trago d
                    {nombre: 'Tom Collins', receta: "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Soda en un vaso largo con abundante hielo. Decorá con una rodaja de limón, una cereza y listo"},
 ]
 
-const retrieveCocktails = () => {
-    const cocktailsString = localStorage.getItem("cocktails");
-    return cocktailsString ? JSON.parse(cocktailsString) : [];
-  }
-  
-retrieveCocktails();
-  
+// Guardando el array en local storage
+
+  const cocktailsString = JSON.stringify(cocktails);
+  localStorage.setItem("Cocktails", cocktailsString);
+
+// Trayendolo desde local storage y guardandolo en una variable que más abajo llamo
+
+  const arrayCocktails = JSON.parse(localStorage.getItem ("Cocktails")) 
 
 //Variables asociadas al DOM mediante clases
 
@@ -63,24 +63,13 @@ const mostrarCocktails = (t)=> {
    
 }  
 //LLamo a las funciones 
-mostrarCocktails(cocktails) 
+mostrarCocktails(arrayCocktails) // Acá la variable que contiene el array de objetos en local storage
 inputSearch.addEventListener("input", filterCocktails)
 
 
-/* const saveCocktails = () => {
-    const cocktailsString = JSON.stringify(cocktails);
-    localStorage.setItem("cocktails", cocktailsString);
-  }
-  
-  saveCocktails(); */
 
 
-//Tener en cuenta para hacer pagina de validacion de edad y despues redireccionar a la principal
-//ADD EVENT LISTENER
-/* btnNuevo.addEventListener("click", ()=> {
-    location.href = 'nuevo.html'
-})
- */
+
 
 
 
