@@ -67,12 +67,12 @@ mostrarCocktails(cocktails)
 inputSearch.addEventListener("input", filterCocktails)
 
 
-const saveCocktails = () => {
+/* const saveCocktails = () => {
     const cocktailsString = JSON.stringify(cocktails);
     localStorage.setItem("cocktails", cocktailsString);
   }
   
-  saveCocktails();
+  saveCocktails(); */
 
 
 //Tener en cuenta para hacer pagina de validacion de edad y despues redireccionar a la principal

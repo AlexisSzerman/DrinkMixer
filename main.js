@@ -54,3 +54,4 @@ btnMixer.addEventListener("click", function () {
     document.querySelector(".selector").appendChild(cardCocktail);
 
 });
+
