@@ -10,7 +10,7 @@ const validateAge = () => {
 
   const birthYear = parseInt(birthYearString);
 
-  const age = currentYear - birthYear; // Resta simple para saber la edad y el condicional para validar acceso
+  const age = currentYear - birthYear; // Resta simple para saber la edad y el condicional para validar acceso si es mayor de edad
 
   if (age >= ageLimit) {
     window.location.href = "main.html";
@@ -22,7 +22,7 @@ const validateAge = () => {
     </div>`;
     document.querySelector(".age-error").appendChild(errorMsg);
   }
-  localStorage.setItem("Edad", age);
+  localStorage.setItem("Edad", age); //Guardo la edad en el local storage
 };
 
 // Asocio el submit a la etiqueta form y a su vez con el submit
@@ -30,11 +30,3 @@ document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault(); // Para prevenir que recargue la página
   validateAge();
 });
-
-/* const saveCocktails = () => {
-  const cocktailsString = JSON.stringify(cocktails);
-  localStorage.setItem("cocktails", cocktailsString);
-}
-
-saveCocktails(); */
-

@@ -24,7 +24,7 @@ const cocktailCard = document.querySelector(".cocktail-cards")
 // Template strings con template literals para que aparezcan las cards para la búsqueda
 
 const cardRecipe = (trago)=> {
-    return `<div class="card" style="width: 18rem;">
+    return `<div class="card my-4" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${trago.nombre}</h5>
       <p class="card-text">${trago.receta}</p>
