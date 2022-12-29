@@ -1,1 +1,6 @@
-[{"nombre":"Gin Tonic","base":"Gin","diluyente":"Tonica"},{"nombre":"Cuba Libre","base":"Ron","diluyente":"Coca Cola"},{"nombre":"Vodka Tonic","base":"Vodka","diluyente":"Tonica"},{"nombre":"Whiskey Sour","base":"Whiskey","diluyente":"Jugo de limon"}]
+[{"nombre":"Gin Tonic","base":"Gin","diluyente":"Tonica"},
+{"nombre":"Cuba Libre","base":"Ron","diluyente":"Coca Cola"},
+{"nombre":"Vodka Tonic","base":"Vodka","diluyente":"Tonica"},
+{"nombre":"Whiskey Sour","base":"Whiskey","diluyente":"Jugo de limon"},
+{"nombre":"Tom Collins","base":"Gin","diluyente":"Soda"}
+]
