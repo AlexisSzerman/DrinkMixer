@@ -15,11 +15,30 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="main.html">🍸DrinkMixer🍸</a>
-          <button class="btn btn-primary">Mis Favoritos</button>
+          <!-- <button class="btn btn-secondary fav-btn">Mis Favoritos</button> -->
+          <button class="btn btn-secondary fav-btn" data-toggle="modal" data-target="#favoritesModal">Mis Favoritos</button>
+
         </div>
     </nav>
 
-<div class="container">
+    <div class="modal" tabindex="-1" role="dialog" id="favoritesModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Mis Favoritos</h5>    
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary close" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container">  
     
     <h3 class="mt-4">Bienvenido a DrinkMixer! Por favor seleccioná los ingredientes que tenés disponibles y te mostraremos que
         cocktails podés armar.</h3>
@@ -70,6 +89,7 @@
     </script>
     <script src="../js/main.js"></script>
     <script src="../js/search.js"></script>
+    <script src="../js/favorites.js"></script>
 </body>
 
 </html>

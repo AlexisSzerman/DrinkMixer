@@ -29,6 +29,7 @@ const cardRecipe = (trago)=> {
       <h5 class="card-title">${trago.nombre}</h5>
       <p class="card-text">${trago.receta}</p>
     </div>
+    <button class="save-btn btn btn-secondary btn-sm mt-2">Agregar a favoritos</button>
   </div>`
 }
 
