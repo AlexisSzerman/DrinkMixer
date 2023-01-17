@@ -1,6 +1,3 @@
-// Array vacio para pushear los favoritos
-let favoriteCocktails = [];
-/* let btnFavorites = document.querySelector(".fav-btn"); */
 // Get the button that opens the modal
 let favBtn = document.querySelector('.fav-btn');
 // Get the modal
@@ -8,53 +5,86 @@ let favoritesModal = document.getElementById('favoritesModal');
 // Get the close button
 let closeBtn = document.getElementsByClassName("close")[0];
 
+//Add an event listener to the button that opens the modal 
+ favBtn.addEventListener('click', function() {
+  favoritesModal.style.display = "block";
+}); 
+ 
+// Add an event listener to the close button
+ closeBtn.addEventListener('click', function() {
+  favoritesModal.style.display = "none";
+}); 
 
-function addToFavorites(name) {
-  // para chequear que el cocktail no está ya en el array
-  let duplicate = favoriteCocktails.find(function(cocktail) {
-    return cocktail.name === name.name;
+ 
+
+
+//Buscando las tarjetas para que extraiga la infromación
+
+const cards = document.querySelectorAll(".card");
+cards.forEach((card) => {
+  card.addEventListener("click", (e) => {
+    leerDatosProducto(e.target.parentElement);
   });
-  if (!duplicate) {
-    favoriteCocktails.push(name);
-    sessionStorage.setItem("Favorites", JSON.stringify(favoriteCocktails));
-  } else {
-    alert("Este cocktail ya está en tus favoritos!");
+});
+
+document.querySelector(".fav-btn").addEventListener("click", () => {
+  carritoHTML();
+});
+
+
+//Array vacio para guardar los productos
+let articulosCarrito = [];
+
+
+function leerDatosProducto(producto) {
+  const infoProducto = {
+    titulo: producto.querySelector(".card-title").textContent,
+    id: producto.querySelector(".btn").getAttribute("data-id"),
+  };
+
+  //Agrega elementos al carrito
+  articulosCarrito = [...articulosCarrito, infoProducto];
+
+  //LLamo a la funcion para mostrar los productos en el carrito
+  carritoHTML();
+}
+
+
+function carritoHTML() {
+  //Limpiar el HTML
+  limpiarHTML();
+
+  articulosCarrito.forEach((producto) => {
+    const row = document.createElement("p");
+    row.innerHTML = `
+    <div class="container">
+    <h5>${producto.titulo}</h5>
+    <button class="btn btn-danger" id="${producto.id}">Eliminar</button>
+    </div>
+    `;
+    carrito.appendChild(row);
+  });
+}
+
+function limpiarHTML() {
+  carrito.innerHTML = "";
+}
+ 
+carrito.addEventListener("click", eliminarProducto);
+
+// Eliminar productos del carrito
+
+function eliminarProducto(e) {
+  if (e.target.classList.contains("btn-danger")) {
+    let productoID = e.target.getAttribute("id");
+    articulosCarrito = articulosCarrito.filter(
+      (producto) => producto.id !== productoID
+    );
+    carritoHTML();
   }
 }
 
-// Add an event listener to the button that opens the modal
-favBtn.addEventListener('click', function() {
-  favoritesModal.style.display = "block";
-});
 
-// Add an event listener to the close button
-closeBtn.addEventListener('click', function() {
-  favoritesModal.style.display = "none";
-});
+  
 
-// Add an event listener to the "Añadir a mis favoritos" button
-let addFavoritesBtns = document.querySelectorAll(".save-btn");
-  for (let i = 0; i < addFavoritesBtns.length; i++) {
-    addFavoritesBtns[i].addEventListener("click", function() {
-      let cocktail = {
-        name: this.parentNode.querySelector(".card-title").innerHTML,
-      };
-      addToFavorites(cocktail);
-    });
-  }
-
-//Para traer los favoritos que se guardaron en el session storage
-  let favorites = JSON.parse(sessionStorage.getItem("Favorites"));
-
-//Para que muestre en el modal de "mis favoritos" los elementos guardados en el array que está en session storage
-
-  if (favorites) {
-    let modalBody = document.querySelector("#favoritesModal .modal-body");
-    modalBody.innerHTML = "";
-    favorites.forEach(function(favorite, i) {
-        let p = document.createElement("p");
-        p.innerHTML = "🍸" + " " + favorite.name;
-        modalBody.appendChild(p);
-    });
-  } 
 

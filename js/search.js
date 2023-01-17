@@ -1,10 +1,10 @@
 // Array de objetos con los nombres de los tragos y sus recetas
 
-const cocktails = [{nombre: 'Gin Tonic', receta: "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
-                   {nombre: 'Cuba Libre', receta: "Para disfrutar de este trago debes poner 2.5oz de Ron y 3oz de Coca-Cola en un vaso con abundante hielo. Decorá con una rodaja de limón, o lima y listo"},
-                   {nombre: 'Vodka Tonic', receta: "Para disfrutar de este trago debes poner 2.5oz de Vodka y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
-                   {nombre: 'Whiskey Sour', receta: "Para disfrutar de este trago debes poner 2.5oz de Whiskey y 3oz de Jugo de Limón en un vaso corto con abundante hielo. Decorá con una rodaja de limón y listo"},
-                   {nombre: 'Tom Collins', receta: "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Soda en un vaso largo con abundante hielo. Decorá con una rodaja de limón, una cereza y listo"},
+const cocktails = [{ id: "1", nombre: 'Gin Tonic', receta: "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
+                   { id: "2", nombre: 'Cuba Libre', receta: "Para disfrutar de este trago debes poner 2.5oz de Ron y 3oz de Coca-Cola en un vaso con abundante hielo. Decorá con una rodaja de limón, o lima y listo"},
+                   {id: "3", nombre: 'Vodka Tonic', receta: "Para disfrutar de este trago debes poner 2.5oz de Vodka y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
+                   {id: "4", nombre: 'Whiskey Sour', receta: "Para disfrutar de este trago debes poner 2.5oz de Whiskey y 3oz de Jugo de Limón en un vaso corto con abundante hielo. Decorá con una rodaja de limón y listo"},
+                   {id: "5", nombre: 'Tom Collins', receta: "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Soda en un vaso largo con abundante hielo. Decorá con una rodaja de limón, una cereza y listo"},
 ]
 
 // Guardando el array en local storage
@@ -24,13 +24,13 @@ const cocktailCard = document.querySelector(".cocktail-cards")
 // Template strings con template literals para que aparezcan las cards para la búsqueda
 
 const cardRecipe = (trago)=> {
-    return `<div class="card my-4" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">${trago.nombre}</h5>
-      <p class="card-text">${trago.receta}</p>
-    </div>
-    <button class="save-btn btn btn-secondary btn-sm mt-2">Agregar a favoritos</button>
-  </div>`
+  return `<div class="card my-4" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">${trago.nombre}</h5>
+    <p class="card-text">${trago.receta}</p>
+  </div>
+  <button class="save-btn btn btn-secondary btn-sm mt-2" data-id="${trago.id}">Agregar a favoritos</button>
+</div>`
 }
 
 
