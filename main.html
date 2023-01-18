@@ -15,7 +15,6 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="main.html">🍸DrinkMixer🍸</a>
-      <!-- <button class="btn btn-secondary fav-btn">Mis Favoritos</button> -->
       <button class="btn btn-secondary fav-btn" data-toggle="modal" data-target="#favoritesModal">Mis Favoritos</button>
 
     </div>
@@ -30,7 +29,7 @@
         </div>
         <div class="modal-body">
           <p>Aquí encontrarás tus Favoritos</p>
-          <div id="carrito"></div>
+          <div id="favModal"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary close" data-dismiss="modal">Cerrar</button>
@@ -64,7 +63,7 @@
         <select class="form-select" id="mixer">
           <option value="Agua Tónica">Agua tónica</option>
           <option value="Coca-Cola">Coca-Cola</option>
-          <option value="Limonada">Limonada</option>
+          <option value="Jugo de limón">Jugo de limón</option>
           <option value="Soda">Soda</option>
         </select>
       </div>
@@ -77,8 +76,8 @@
 
 
 
-  <div class="container">
-    <h4>También podes usar nuestro buscador</h4>
+  <div class="container mt-4">
+    <h4>Buscá el cocktail por nombre</h4>
     <input class="form-control me-sm-2" type="search" id="inputSearch" placeholder="Escribí el nombre del trago">
     <div class="cocktail-cards d-flex"></div>
     <div class="cocktail-cards-error"></div>

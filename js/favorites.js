@@ -1,86 +1,78 @@
-// Get the button that opens the modal
-let favBtn = document.querySelector('.fav-btn');
-// Get the modal
+// Capturando modal de favoritos
 let favoritesModal = document.getElementById('favoritesModal');
-// Get the close button
+//Variable para capturar el boton para abrir el modal
+let favBtn = document.querySelector('.fav-btn');
+//Variable para capturar el boton para cerrar el modal
 let closeBtn = document.getElementsByClassName("close")[0];
 
-//Add an event listener to the button that opens the modal 
- favBtn.addEventListener('click', function() {
+//Event listener para abrir modal
+favBtn.addEventListener('click', function() {
   favoritesModal.style.display = "block";
 }); 
- 
-// Add an event listener to the close button
- closeBtn.addEventListener('click', function() {
+
+//Event listener para cerrar modal
+closeBtn.addEventListener('click', function() {
   favoritesModal.style.display = "none";
 }); 
-
- 
 
 
 //Buscando las tarjetas para que extraiga la infromación
 
-const cards = document.querySelectorAll(".card");
-cards.forEach((card) => {
+const cocktailCards = document.querySelectorAll(".card");
+cocktailCards.forEach((card) => {
   card.addEventListener("click", (e) => {
-    leerDatosProducto(e.target.parentElement);
+    cocktailsData(e.target.parentElement);
   });
 });
 
 document.querySelector(".fav-btn").addEventListener("click", () => {
-  carritoHTML();
+  cocktailFavs();
 });
 
+//Array vacio para guardar los cocktails
+let favorites = [];
 
-//Array vacio para guardar los productos
-let articulosCarrito = [];
-
-
-function leerDatosProducto(producto) {
-  const infoProducto = {
-    titulo: producto.querySelector(".card-title").textContent,
-    id: producto.querySelector(".btn").getAttribute("data-id"),
+function cocktailsData(drink) {
+  const infoDrink = {
+    nombre: drink.querySelector(".card-title").textContent,
+    id: drink.querySelector(".btn").getAttribute("data-id"),
   };
 
-  //Agrega elementos al carrito
-  articulosCarrito = [...articulosCarrito, infoProducto];
-
-  //LLamo a la funcion para mostrar los productos en el carrito
-  carritoHTML();
+  //Agrega los favoritos al modal
+  favorites = [...favorites, infoDrink];
 }
 
+function cocktailFavs() {
+  //Elimina los favoritos dentro del modal
+  cleanFavs();
 
-function carritoHTML() {
-  //Limpiar el HTML
-  limpiarHTML();
-
-  articulosCarrito.forEach((producto) => {
-    const row = document.createElement("p");
-    row.innerHTML = `
-    <div class="container">
-    <h5>${producto.titulo}</h5>
-    <button class="btn btn-danger" id="${producto.id}">Eliminar</button>
+  favorites.forEach((mixing) => {
+    const mixFav = document.createElement("p");
+    mixFav.innerHTML = `
+    <div class="container d-flex">
+    <h5>🍸 ${mixing.nombre}</h5>
+    <button class="btn btn-danger ms-4" id="${mixing.id}">X</button>
     </div>
     `;
-    carrito.appendChild(row);
+    favModal.appendChild(mixFav);
   });
 }
 
-function limpiarHTML() {
-  carrito.innerHTML = "";
+function cleanFavs() {
+  favModal.innerHTML = "";
 }
  
-carrito.addEventListener("click", eliminarProducto);
+favModal.addEventListener("click", deleteFav);
 
-// Eliminar productos del carrito
+//Elimina los favoritos dentro del modal
 
-function eliminarProducto(e) {
+function deleteFav (e) {
   if (e.target.classList.contains("btn-danger")) {
-    let productoID = e.target.getAttribute("id");
-    articulosCarrito = articulosCarrito.filter(
-      (producto) => producto.id !== productoID
+    let drinkID = e.target.getAttribute("id");
+    favorites = favorites.filter(
+      (mixing) => mixing.id !== drinkID
     );
-    carritoHTML();
+    cocktailFavs();
   }
 }
 

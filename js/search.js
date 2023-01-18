@@ -9,12 +9,12 @@ const cocktails = [{ id: "1", nombre: 'Gin Tonic', receta: "Para disfrutar de es
 
 // Guardando el array en local storage
 
-  const cocktailsString = JSON.stringify(cocktails);
+ /*  const cocktailsString = JSON.stringify(cocktails);
   localStorage.setItem("Cocktails", cocktailsString);
-
+ */
 // Trayendolo desde local storage y guardandolo en una variable que más abajo llamo
-
-  const arrayCocktails = JSON.parse(localStorage.getItem ("Cocktails")) 
+/* 
+  const arrayCocktails = JSON.parse(localStorage.getItem ("Cocktails"))  */
 
 //Variables asociadas al DOM mediante clases
 
@@ -33,8 +33,7 @@ const cardRecipe = (trago)=> {
 </div>`
 }
 
-
-// Filtrado de los tragos asociado al imput con arrow function
+// Filtrado de los tragos asociado al input con arrow function
 
 const filterCocktails = () => {
     let busqueda = inputSearch.value.trim().toLowerCase();
@@ -43,8 +42,8 @@ const filterCocktails = () => {
     //Validación para que tire un mensaje de error en caso que no se ingrese un nombre corrrecto
     if (resultado.length === 0) {
       cocktailCard.innerHTML = `
-        <div class="alert alert-danger" role="alert">
-          <h4>No se han encontrado tragos con ese nombre. Por favor, ingresá un nombre válido</h4>
+        <div class="alert alert-danger mt-4" role="alert">
+          <h5>No se han encontrado tragos con ese nombre. Por favor, ingresá un nombre válido</h5>
         </div>`;
     } else {
       mostrarCocktails(resultado);
@@ -63,8 +62,9 @@ const mostrarCocktails = (t)=> {
     }  
    
 }  
+
 //LLamo a las funciones 
-mostrarCocktails(arrayCocktails) // Acá la variable que contiene el array de objetos en local storage
+mostrarCocktails(cocktails) // Acá la variable que contiene el array de objetos en local storage
 inputSearch.addEventListener("input", filterCocktails)
 
 
