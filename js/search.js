@@ -31,7 +31,9 @@ const cardRecipe = (trago)=> {
   </div>
   <button class="save-btn btn btn-secondary btn-sm mt-2" data-id="${trago.id}">Agregar a favoritos</button>
 </div>`
-}
+
+} 
+
 
 // Filtrado de los tragos asociado al input con arrow function
 
@@ -68,10 +70,24 @@ mostrarCocktails(cocktails) // Acá la variable que contiene el array de objetos
 inputSearch.addEventListener("input", filterCocktails)
 
 
+//Toastify cuando se agrega un cocktail a favoritos
 
-
-
-
-
+let toastify = document.querySelectorAll(".save-btn");
+toastify.forEach(button => {
+  button.addEventListener("click", () => {
+    Toastify({
+      text: "Agregado a Favoritos",
+      duration: 3000,
+      close: true,
+      gravity: "bottom",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+      onClick: function(){}
+    }).showToast();
+  });
+});
 
 

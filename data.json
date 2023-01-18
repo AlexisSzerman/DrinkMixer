@@ -1,6 +1,6 @@
-[{"nombre":"Gin Tonic","receta":"Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
-{"nombre":"Cuba Libre","receta":"Para disfrutar de este trago debes poner 2.5oz de Ron y 3oz de Coca-Cola en un vaso con abundante hielo. Decorá con una rodaja de limón, o lima y listo"},
-{"nombre":"Vodka Tonic","receta":"Para disfrutar de este trago debes poner 2.5oz de Vodka y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
-{"nombre":"Whiskey Sour","receta":"Para disfrutar de este trago debes poner 2.5oz de Whiskey y 3oz de Jugo de Limón en un vaso corto con abundante hielo. Decorá con una rodaja de limón y listo"},
-{"nombre":"Tom Collins","receta":"Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Soda en un vaso largo con abundante hielo. Decorá con una rodaja de limón, una cereza y listo"}
+[{ "id": "1", "nombre": "Gin Tonic", "receta": "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
+{ "id": "2", "nombre": "Cuba Libre", "receta": "Para disfrutar de este trago debes poner 2.5oz de Ron y 3oz de Coca-Cola en un vaso con abundante hielo. Decorá con una rodaja de limón, o lima y listo"},
+{"id": "3", "nombre": "Vodka Tonic", "receta": "Para disfrutar de este trago debes poner 2.5oz de Vodka y 3oz de Agua Tónica en un vaso con abundante hielo. Decorá con una rodaja de limón, o pepino y listo"},
+{"id": "4", "nombre": "Whiskey Sour", "receta": "Para disfrutar de este trago debes poner 2.5oz de Whiskey y 3oz de Jugo de Limón en un vaso corto con abundante hielo. Decorá con una rodaja de limón y listo"},
+{"id": "5", "nombre": "Tom Collins", "receta": "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Soda en un vaso largo con abundante hielo. Decorá con una rodaja de limón, una cereza y listo"}
 ]

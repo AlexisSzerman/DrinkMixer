@@ -47,14 +47,16 @@ function cocktailFavs() {
   cleanFavs();
 
   favorites.forEach((mixing) => {
-    const mixFav = document.createElement("p");
+    const mixFav = document.createElement("h5");
     mixFav.innerHTML = `
     <div class="container d-flex">
     <h5>🍸 ${mixing.nombre}</h5>
-    <button class="btn btn-danger ms-4" id="${mixing.id}">X</button>
+    <button class="btn btn-danger ms-4 delFav-btn" id="${mixing.id}">X</button>
     </div>
     `;
+
     favModal.appendChild(mixFav);
+    
   });
 }
 
@@ -76,7 +78,26 @@ function deleteFav (e) {
   }
 }
 
+//para agregar sweet alert
+/* button.addEventListener("click", (e) => {
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this item!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      swal("Poof! Your item has been deleted!", {
+        icon: "success",
+      });
+      e.target.remove();
+    } else {
+      swal("Your item is safe!");
+    }
+  });
+}); */
 
-  
 
-
+//falta agregar los favoritos a localStorage y el Json aparte
