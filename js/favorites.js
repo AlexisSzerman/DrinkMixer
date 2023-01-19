@@ -69,11 +69,10 @@ favModal.addEventListener("click", deleteFav);
 
 
 //Elimina los favoritos dentro del modal
-
-function deleteFav (e) {
+function deleteFav(e) {
   if (e.target.classList.contains("btn-danger")) {
     let drinkID = e.target.getAttribute("id");
-    swalWithBootstrapButtons.fire({ //Sweetalert para confirmar o no el borrado del favorito
+    swalWithBootstrapButtons.fire({ 
       title: `Quitar el cocktail de favoritos?`,
       icon: 'warning',
       showCancelButton: true,
@@ -83,15 +82,15 @@ function deleteFav (e) {
     }).then((result) => {
       if (result.isConfirmed) {
         favorites = favorites.filter((mixing) => mixing.id !== drinkID);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
         cocktailFavs();
         swalWithBootstrapButtons.fire(
           'Listo!',
-          'Quitaste el cocktail de tus favoritos.',
+          'Quitaste el cocktail de tus favoritos',
           'success'
         )
       } else if (
         result.dismiss === Swal.DismissReason.cancel
-        
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
@@ -103,10 +102,11 @@ function deleteFav (e) {
   }
 }
 
+
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
-    confirmButton: 'btn btn-success',
-    cancelButton: 'btn btn-danger'
+    confirmButton: 'btn btn-primary',
+    cancelButton: 'btn btn-secondary'
   },
   buttonsStyling: false
 })
