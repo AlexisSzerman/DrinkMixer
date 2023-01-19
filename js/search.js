@@ -12,11 +12,11 @@ const cocktails = [{ id: "1", nombre: 'Gin Tonic', receta: "Para disfrutar de es
 //Variables asociadas al DOM mediante clases
 
 const inputSearch = document.querySelector(".form-control")
-const cocktailCard = document.querySelector(".cocktail-cards") 
+const cocktailCard = document.querySelector(".cocktail-cards")  
 
 // Template strings con template literals para que aparezcan las cards para la búsqueda
 
-const cardRecipe = (trago)=> {
+ const cardRecipe = (trago)=> {
   return `<div class="card my-4" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">${trago.nombre}</h5>
@@ -26,16 +26,16 @@ const cardRecipe = (trago)=> {
 </div>`
 
 } 
- 
+  
 
 // Filtrado de los tragos asociado al input con arrow function
 
-const filterCocktails = () => {
+ const filterCocktails = () => {
     let busqueda = inputSearch.value.trim().toLowerCase();
-    let resultado = cocktails.filter(trago => trago.nombre.toLowerCase().startsWith(busqueda)); //En la entrega anterior utilizaba includes, pero me tiraba valores verdaderos que no estaban bien, por lo que decidí cambiar a startsWith que me trae la coincidencia exacta del nombre
+    let resultado = cocktails.filter(trago => trago.nombre.toLowerCase().startsWith(busqueda));  //En la entrega anterior utilizaba includes, pero me tiraba valores verdaderos que no estaban bien, por lo que decidí cambiar a startsWith que me trae la coincidencia exacta del nombre
 
     //Validación para que tire un mensaje de error en caso que no se ingrese un nombre corrrecto
-    if (resultado.length === 0) {
+   if (resultado.length === 0) {
       cocktailCard.innerHTML = `
         <div class="alert alert-danger mt-4" role="alert">
           <h5>No se han encontrado tragos con ese nombre. Por favor, ingresá un nombre válido</h5>
@@ -45,9 +45,9 @@ const filterCocktails = () => {
     }
   }
    
-
+ 
 //Con esta funcion muestro el contenido del array de cocktails gracias al forEach y lo asocio a la variable que crea las cards
-const mostrarCocktails = (t)=> {
+ const mostrarCocktails = (t)=> {
     let tarjetas = ""
     if (t.length > 0) {
         t.forEach(trago => {
@@ -57,11 +57,7 @@ const mostrarCocktails = (t)=> {
     }  
    
 }  
-
-
+ 
 //LLamo a las funciones 
 mostrarCocktails(cocktails) // Acá la variable que contiene el array de objetos en local storage
 inputSearch.addEventListener("input", filterCocktails)
-
-
-

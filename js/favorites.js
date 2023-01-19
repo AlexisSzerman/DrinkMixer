@@ -30,7 +30,7 @@ document.querySelector(".fav-btn").addEventListener("click", () => {
 });
 
 //Array vacio para guardar los cocktails
-let favorites = [];
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 function cocktailsData(drink) {
   const infoDrink = {
@@ -40,6 +40,7 @@ function cocktailsData(drink) {
 
   //Agrega los favoritos al modal
   favorites = [...favorites, infoDrink];
+  localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
 function cocktailFavs() {
@@ -65,6 +66,7 @@ function cleanFavs() {
 }
  
 favModal.addEventListener("click", deleteFav);
+
 
 //Elimina los favoritos dentro del modal
 
