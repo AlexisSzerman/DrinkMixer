@@ -7,19 +7,12 @@ const cocktails = [{ id: "1", nombre: 'Gin Tonic', receta: "Para disfrutar de es
                    {id: "5", nombre: 'Tom Collins', receta: "Para disfrutar de este trago debes poner 2.5oz de Gin y 3oz de Soda en un vaso largo con abundante hielo. Decorá con una rodaja de limón, una cereza y listo"},
 ]
 
-// Guardando el array en local storage
 
- /*  const cocktailsString = JSON.stringify(cocktails);
-  localStorage.setItem("Cocktails", cocktailsString);
- */
-// Trayendolo desde local storage y guardandolo en una variable que más abajo llamo
-/* 
-  const arrayCocktails = JSON.parse(localStorage.getItem ("Cocktails"))  */
 
 //Variables asociadas al DOM mediante clases
 
 const inputSearch = document.querySelector(".form-control")
-const cocktailCard = document.querySelector(".cocktail-cards")
+const cocktailCard = document.querySelector(".cocktail-cards") 
 
 // Template strings con template literals para que aparezcan las cards para la búsqueda
 
@@ -33,7 +26,7 @@ const cardRecipe = (trago)=> {
 </div>`
 
 } 
-
+ 
 
 // Filtrado de los tragos asociado al input con arrow function
 
@@ -51,7 +44,7 @@ const filterCocktails = () => {
       mostrarCocktails(resultado);
     }
   }
-  
+   
 
 //Con esta funcion muestro el contenido del array de cocktails gracias al forEach y lo asocio a la variable que crea las cards
 const mostrarCocktails = (t)=> {
@@ -65,29 +58,10 @@ const mostrarCocktails = (t)=> {
    
 }  
 
+
 //LLamo a las funciones 
 mostrarCocktails(cocktails) // Acá la variable que contiene el array de objetos en local storage
 inputSearch.addEventListener("input", filterCocktails)
 
-
-//Toastify cuando se agrega un cocktail a favoritos
-
-let toastify = document.querySelectorAll(".save-btn");
-toastify.forEach(button => {
-  button.addEventListener("click", () => {
-    Toastify({
-      text: "Agregado a Favoritos",
-      duration: 3000,
-      close: true,
-      gravity: "bottom",
-      position: "right",
-      stopOnFocus: true,
-      style: {
-        background: "linear-gradient(to right, #00b09b, #96c93d)",
-      },
-      onClick: function(){}
-    }).showToast();
-  });
-});
 
 

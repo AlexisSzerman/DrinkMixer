@@ -71,33 +71,65 @@ favModal.addEventListener("click", deleteFav);
 function deleteFav (e) {
   if (e.target.classList.contains("btn-danger")) {
     let drinkID = e.target.getAttribute("id");
-    favorites = favorites.filter(
-      (mixing) => mixing.id !== drinkID
-    );
-    cocktailFavs();
+    swalWithBootstrapButtons.fire({ //Sweetalert para confirmar o no el borrado del favorito
+      title: `Quitar el cocktail de favoritos?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        favorites = favorites.filter((mixing) => mixing.id !== drinkID);
+        cocktailFavs();
+        swalWithBootstrapButtons.fire(
+          'Listo!',
+          'Quitaste el cocktail de tus favoritos.',
+          'success'
+        )
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+        
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Conservaste el cocktail en favoritos',
+          'error'
+        )
+      }
+    });
   }
 }
 
-//para agregar sweet alert
-/* button.addEventListener("click", (e) => {
-  swal({
-    title: "Are you sure?",
-    text: "Once deleted, you will not be able to recover this item!",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      swal("Poof! Your item has been deleted!", {
-        icon: "success",
-      });
-      e.target.remove();
-    } else {
-      swal("Your item is safe!");
-    }
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+//Toastify cuando se agrega un cocktail a favoritos
+
+let toastify = document.querySelectorAll(".save-btn");
+toastify.forEach(button => {
+  button.addEventListener("click", () => {
+    Toastify({
+      text: "Agregado a Favoritos",
+      duration: 3000,
+      close: true,
+      gravity: "bottom",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+      onClick: function(){}
+    }).showToast();
   });
-}); */
+});
+
+
 
 
 //falta agregar los favoritos a localStorage y el Json aparte

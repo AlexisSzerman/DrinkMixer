@@ -17,7 +17,7 @@ const validateAge = () => {
   } else {
     // Si no es mayor de edad, mostrarmos un mensaje de error
     errorMsg.innerHTML = `
-    <div class=" container alert alert-danger" role="alert">
+    <div class="container alert alert-danger mt-4" role="alert">
     <h4>Lo sentimos, no puedes ingresar a DrinkMixer</h4>
     </div>`;
     document.querySelector(".age-error").appendChild(errorMsg);
