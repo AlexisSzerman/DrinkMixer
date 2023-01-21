@@ -1,6 +1,6 @@
 //Establecemos una variable con el minimo de edad requerido, una con el año actual y con el mensaje de error
 const ageLimit = 18;
-const currentYear = 2022;
+const currentYear = 2023;
 let errorMsg = document.createElement("h4");
 
 //Armé una función que tome la edad del input, parseamos el año para que sea un número

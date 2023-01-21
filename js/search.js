@@ -65,12 +65,9 @@ fetch("js/cocktails.json")
 
 //Seccion Favoritos
 
-// Capturando modal de favoritos
-let favoritesModal = document.getElementById("favoritesModal");
-//Para abrir el modal
-let favBtn = document.querySelector(".fav-btn");
-//Para el boton de cerrar el modal
-let closeBtn = document.getElementsByClassName("close")[0];
+let favoritesModal = document.getElementById("favoritesModal"); // Capturando modal de favoritos
+let favBtn = document.querySelector(".fav-btn"); //Para abrir el modal
+let closeBtn = document.getElementsByClassName("close")[0]; //Para el boton de cerrar el modal
 
 //Event listener para abrir modal
 favBtn.addEventListener("click", function () {
@@ -85,8 +82,6 @@ closeBtn.addEventListener("click", function () {
 document.querySelector(".fav-btn").addEventListener("click", () => {
   cocktailFavs();
 }); //Mostrando los favoritos
-
-
 
 function addToFavorites(drink) {
   // Extrayendo la informacion de la card
