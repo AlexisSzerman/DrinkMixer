@@ -3,6 +3,8 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || []; //Array vac
 const inputSearch = document.querySelector(".form-control");
 const cocktailCard = document.querySelector(".cocktail-cards");
 
+// Template strings con template literals para que aparezcan las cards con las propiedades nombre, receta y id
+
 const cardRecipe = (trago) => {
   return `
     <div class="card my-4">
@@ -15,11 +17,12 @@ const cardRecipe = (trago) => {
    </div> `;
 };
 
+// Filtrado de los tragos asociado al imput con arrow function
 const filterCocktails = () => {
   let busqueda = inputSearch.value.trim().toLowerCase();
   let resultado = cocktails.filter((trago) =>
-    trago.nombre.toLowerCase().startsWith(busqueda)
-  );
+    trago.nombre.toLowerCase().startsWith(busqueda) 
+  ); //En la entrega anterior utilizaba includes, pero me devolvía valores verdaderos que no estaban bien, por lo que decidí cambiar a startsWith que me trae la coincidencia exacta del nombre
 
   if (resultado.length === 0) {
     cocktailCard.innerHTML = `
@@ -28,9 +31,10 @@ const filterCocktails = () => {
         </div>`;
   } else {
     mostrarCocktails(resultado);
-  }
+  } //Validación para que tire un mensaje de error en caso que no se ingrese un nombre corrrecto
 };
 
+//Con esta funcion muestro las cards
 const mostrarCocktails = (t) => {
   let tarjetas = "";
   if (t.length > 0) {
@@ -39,7 +43,7 @@ const mostrarCocktails = (t) => {
     });
     cocktailCard.innerHTML = tarjetas;
   }
-  // Add event listener to each save button
+  // Agregando boton para guardar favorito con su event listener
   const saveButtons = document.querySelectorAll(".save-btn");
   saveButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -48,6 +52,8 @@ const mostrarCocktails = (t) => {
   });
 };
 
+
+// Fetch al Json cocktails con los datos
 let cocktails;
 fetch("js/cocktails.json")
   .then((response) => response.json())
@@ -55,16 +61,15 @@ fetch("js/cocktails.json")
     cocktails = data;
     mostrarCocktails(cocktails);
     inputSearch.addEventListener("input", filterCocktails);
-  })
-  .catch((error) => {
-    console.log(error);
   });
+
+//Seccion Favoritos
 
 // Capturando modal de favoritos
 let favoritesModal = document.getElementById("favoritesModal");
-//Variable para capturar el boton para abrir el modal
+//Para abrir el modal
 let favBtn = document.querySelector(".fav-btn");
-//Variable para capturar el boton para cerrar el modal
+//Para el boton de cerrar el modal
 let closeBtn = document.getElementsByClassName("close")[0];
 
 //Event listener para abrir modal
@@ -77,35 +82,21 @@ closeBtn.addEventListener("click", function () {
   favoritesModal.style.display = "none";
 });
 
-//Buscando las tarjetas para que extraiga la infromación
-
-const cocktailCards = document.querySelectorAll(".save-btn");
-cocktailCards.forEach(() => {
-  button.addEventListener("click", (e) => {
-    cocktailsData(e.target.parentElement);
-  });
-});
-
 document.querySelector(".fav-btn").addEventListener("click", () => {
   cocktailFavs();
-}); //chatgpt dice que esto no es necesario
+}); //Mostrando los favoritos
 
-const buttons = document.querySelectorAll(".save-btn");
-buttons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    cocktailsData(e.target.parentElement);
-  });
-});
+
 
 function addToFavorites(drink) {
-  // Extract information from the drink card
+  // Extrayendo la informacion de la card
   const infoDrink = {
     nombre: drink.querySelector(".card-title").textContent,
     id: drink.querySelector(".btn").getAttribute("data-id"),
   };
-  // Check if cocktail is already in favorites
+  // Verificación para saber si el trago ya esta en favoritos, incluyendo toastify alert
   if (favorites.some((favorite) => favorite.id === infoDrink.id)) {
-    // Display Toastify alert
+    
     Toastify({
       text: "Este trago ya está en tus favoritos",
       duration: 3000,
@@ -118,10 +109,10 @@ function addToFavorites(drink) {
       },
     }).showToast();
   } else {
-    // Add cocktail to favorites
+    //Lo agrega al localStorage
     favorites = [...favorites, infoDrink];
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    // Display Toastify alert
+    
     Toastify({
       text: "Agregado a Favoritos",
       duration: 3000,
@@ -173,7 +164,7 @@ function deleteFav(e) {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          favorites = favorites.filter((mixing) => mixing.id !== drinkID);
+          favorites = favorites.filter((mixing) => mixing.id !== drinkID);//Borrando con el metodo filter, viendo el ID
           localStorage.setItem("favorites", JSON.stringify(favorites));
           cocktailFavs();
           swalWithBootstrapButtons.fire(

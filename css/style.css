@@ -12,3 +12,12 @@
     }
   }
   
+ .parent {
+    display:grid;
+    place-items: center;
+    }
+
+.imageIndex {
+  width: 40%;
+  margin: 1rem;
+}
