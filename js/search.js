@@ -5,19 +5,14 @@ const cocktailCard = document.querySelector(".cocktail-cards");
 
 const cardRecipe = (trago) => {
   return `
-  <div class="container">
-  <div class="row">
-  <div class="col col-sm-1">
-    <div class="card my-4">
+     <div class="card m-2">
       <div class="card-body">
-      <h5 class="card-title">${trago.nombre}</h5>
-    <p class="card-text">${trago.receta}</p>
+        <h5 class="card-title">${trago.nombre}</h5>
+    	  <p class="card-text">${trago.receta}</p>
       </div>
-<button class="save-btn btn btn-secondary btn-sm mt-2" data-id="${trago.id}">Agregar a favoritos</button>
+	<button class="save-btn btn btn-secondary btn-sm mt-2" data-	id="${trago.id}">Agregar a favoritos</button>
     </div>
-  </div>
-  </div>
-  </div> `
+  `
 };
 
 const filterCocktails = () => {
