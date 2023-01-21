@@ -1,16 +1,23 @@
 
-let favorites = JSON.parse(localStorage.getItem("favorites")) || []; //Array vacio para guardar los cocktails
+let favorites = JSON.parse(localStorage.getItem("favorites")) || []; //Array vacio para guardar los cocktails en localStorage
 const inputSearch = document.querySelector(".form-control");
 const cocktailCard = document.querySelector(".cocktail-cards");
 
 const cardRecipe = (trago) => {
-  return `<div class="card my-4" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">${trago.nombre}</h5>
+  return `
+  <div class="container">
+  <div class="row">
+  <div class="col col-sm-1">
+    <div class="card my-4">
+      <div class="card-body">
+      <h5 class="card-title">${trago.nombre}</h5>
     <p class="card-text">${trago.receta}</p>
+      </div>
+<button class="save-btn btn btn-secondary btn-sm mt-2" data-id="${trago.id}">Agregar a favoritos</button>
+    </div>
   </div>
-  <button class="save-btn btn btn-secondary btn-sm mt-2" data-id="${trago.id}">Agregar a favoritos</button>
-</div>`;
+  </div>
+  </div> `
 };
 
 const filterCocktails = () => {
@@ -81,15 +88,15 @@ closeBtn.addEventListener('click', function() {
 //Buscando las tarjetas para que extraiga la infromación
 
 const cocktailCards = document.querySelectorAll(".save-btn");
-cocktailCards.forEach((card) => {
+cocktailCards.forEach(() => {
   button.addEventListener("click", (e) => {
     cocktailsData(e.target.parentElement);
   });
 });
-
+ 
 document.querySelector(".fav-btn").addEventListener("click", () => {
    cocktailFavs() ;
-}); //chatgpt dice que esto no es necesario
+}); //chatgpt dice que esto no es necesario 
 
 
 const buttons = document.querySelectorAll(".save-btn");
@@ -100,35 +107,51 @@ buttons.forEach((button) => {
 });
 
 
+
 function addToFavorites(drink) {
   // Extract information from the drink card
   const infoDrink = {
     nombre: drink.querySelector(".card-title").textContent,
     id: drink.querySelector(".btn").getAttribute("data-id"),
   };
-  // Add the drink to the favorites array
-  favorites = [...favorites, infoDrink];
-  // Save the favorites array to local storage
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-  // Show a toast notification
-  Toastify({
-    text: "Agregado a Favoritos",
-    duration: 3000,
-    close: true,
-    gravity: "bottom",
-    position: "right",
-    stopOnFocus: true,
-    style: {
-      background: "linear-gradient(to right, #00b09b, #96c93d)",
-    },
-    onClick: function(){}
-  }).showToast();
+  // Check if cocktail is already in favorites
+  if (favorites.some(favorite => favorite.id === infoDrink.id)) {
+    // Display Toastify alert
+    Toastify({
+      text: "Este trago ya está en tus favoritos",
+      duration: 3000,
+      close: false,
+      gravity: "bottom",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "linear-gradient(to right, #E44C55, #EA39B8)",
+      },
+    }).showToast();
+  } else {
+    // Add cocktail to favorites
+    favorites = [...favorites, infoDrink];
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    // Display Toastify alert
+    Toastify({
+      text: "Agregado a Favoritos",
+      duration: 3000,
+      close: false,
+      gravity: "bottom",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "linear-gradient(to right, #30115e, #6f42c1)",
+      },
+    }).showToast();
+}
 }
 
-function cocktailFavs() {
-  //Elimina los favoritos dentro del modal
-  cleanFavs();
 
+function cocktailFavs() {
+  //Deja de mostrar los favoritos dentro del modal
+  cleanFavs();
+ //Muestra solo el nombre del trago
   favorites.forEach((mixing) => {
     const mixFav = document.createElement("h5");
     mixFav.innerHTML = `
@@ -147,14 +170,14 @@ function cleanFavs() {
   favModal.innerHTML = "";
 }
  
-favModal.addEventListener("click", deleteFav);
+favModal.addEventListener("click", deleteFav); //Event Listener para borrar de favoritos
 
 
 //Elimina los favoritos dentro del modal
 function deleteFav(e) {
   if (e.target.classList.contains("btn-danger")) {
-    let drinkID = e.target.getAttribute("id");
-    swalWithBootstrapButtons.fire({ 
+    let drinkID = e.target.getAttribute("id"); //Se fija en el id para elimiralo
+    swalWithBootstrapButtons.fire({ //SweetAlert para confirmar o cancelar
       title: `Quitar el cocktail de favoritos?`,
       icon: 'question',
       showCancelButton: true,
@@ -183,7 +206,6 @@ function deleteFav(e) {
     });
   }
 }
-
 
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
