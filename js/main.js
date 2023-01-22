@@ -89,7 +89,7 @@ btnMixer.addEventListener("click", function () {
             </div>`
       : spirit.includes("Whiskey") && mixer.includes("Coca-Cola")
       ? `<div class="card" style="width: 18rem;">
-                  <img src="../images/whiskola.webp" alt="Whiskola">
+                  <img src="../images/whisKola.webp" alt="Whiskola">
                   <div class="card-body">
                     <h5 class="card-title">Whiskola</h5>
                     <p class="card-text">Para disfrutar de este trago debes poner en un vaso largo con abundante hielo 2.5oz de Whiskey y 3oz de Coca-Cola. Decorá con una rodaja de limón y listo!</p>
